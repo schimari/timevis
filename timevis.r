@@ -8,7 +8,7 @@ library("webshot")
 
 home <- getwd()
 folder <- "plots"
-datafile <- read.table("data/Urothelkarzinom-Mainz_2016_08_29.txt", sep="\t", header=T, stringsAsFactors = F, na.strings="")
+datafile <- read.table("data/data.txt", sep="\t", header=T, stringsAsFactors = F, na.strings="")
 
 # cleaning and setting data
 data_tr <- datafile	#[,c(1:50)]
@@ -39,20 +39,20 @@ data_tr$E.Nr.12.Datum <- as.Date(data_tr$E.Nr.12.Datum, format="%d.%m.%Y")
 
 # get rid of extra spaces and umlauts
 data_tr$Name <- gsub(" ", "", data_tr$Name)
-data_tr$Name <- gsub("ü", "ue", data_tr$Name)
-data_tr$Name <- gsub("ö", "oe", data_tr$Name)
-data_tr$Name <- gsub("ä", "ae", data_tr$Name)
-data_tr$Name <- gsub("Ü", "Ue", data_tr$Name)
-data_tr$Name <- gsub("Ö", "Oe", data_tr$Name)
-data_tr$Name <- gsub("Ä", "Ae", data_tr$Name)
+data_tr$Name <- gsub("Ã¼", "ue", data_tr$Name)
+data_tr$Name <- gsub("Ã¶", "oe", data_tr$Name)
+data_tr$Name <- gsub("Ã¤", "ae", data_tr$Name)
+data_tr$Name <- gsub("Ãœ", "Ue", data_tr$Name)
+data_tr$Name <- gsub("Ã–", "Oe", data_tr$Name)
+data_tr$Name <- gsub("Ã„", "Ae", data_tr$Name)
 
 data_tr$Vorname <- gsub(" ", "", data_tr$Vorname)
-data_tr$Vorname <- gsub("ü", "ue", data_tr$Vorname)
-data_tr$Vorname <- gsub("ö", "oe", data_tr$Vorname)
-data_tr$Vorname <- gsub("ä", "ae", data_tr$Vorname)
-data_tr$Vorname <- gsub("Ü", "Ue", data_tr$Vorname)
-data_tr$Vorname <- gsub("Ö", "Oe", data_tr$Vorname)
-data_tr$Vorname <- gsub("Ä", "Ae", data_tr$Vorname)
+data_tr$Vorname <- gsub("Ã¼", "ue", data_tr$Vorname)
+data_tr$Vorname <- gsub("Ã¶", "oe", data_tr$Vorname)
+data_tr$Vorname <- gsub("Ã¤", "ae", data_tr$Vorname)
+data_tr$Vorname <- gsub("Ãœ", "Ue", data_tr$Vorname)
+data_tr$Vorname <- gsub("Ã–", "Oe", data_tr$Vorname)
+data_tr$Vorname <- gsub("Ã„", "Ae", data_tr$Vorname)
 
 # create group df
 group_df <- data.frame(id=1:nrow(data_tr), content=sprintf("%s, %s", data_tr$Name, data_tr$Vorname))
